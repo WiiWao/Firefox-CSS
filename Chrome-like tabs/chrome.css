@@ -1,0 +1,85 @@
+:root {
+    /* UI variables (Firefox built-ins) */
+    --inactive-titlebar-opacity: 1 !important;
+    --toolbar-field-border-color: transparent !important;
+    --toolbar-field-background-color: #42414D !important;
+
+    /* Theme colors */
+    --toolbar-tab-color: #2B2A33;
+    --toolbar-hover-color: #53525E;
+
+    /* Sizing */
+    --tab-radius: 10px;
+    --tab-radius-small: 7px;
+    --tab-overlap: 5px;
+    --tab-corner-size: 10px;
+    --tab-bridge-height: 5px;
+    --tab-periphery-offset: 5px;
+}
+
+/* Shared toolbar surface */
+#nav-bar {
+    background: var(--toolbar-tab-color) !important;
+    border: none !important;
+    border-radius: 8px 8px 0 0;
+    z-index: 0;
+}
+
+/* Active tab base */
+.tab-background:is([selected], [multiselected]) {
+    background: var(--toolbar-tab-color) !important;
+    box-shadow: 0 var(--tab-bridge-height) 0 0 var(--toolbar-tab-color) !important;
+    border-radius: var(--tab-radius) var(--tab-radius) 0 0 !important;
+    outline: none !important;
+}
+
+/* Active tab corner fillers */
+.tab-background:is([selected], [multiselected])::before,
+.tab-background:is([selected], [multiselected])::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: var(--tab-corner-size);
+    height: var(--tab-corner-size);
+    box-shadow: 0 0 0 var(--tab-corner-size) var(--toolbar-tab-color);
+    overflow: clip;
+    clip-path: border-box;
+}
+
+.tab-background:is([selected], [multiselected])::before {
+    left: calc(-1 * var(--tab-corner-size));
+    border-radius: 0 0 var(--tab-radius) 0;
+}
+
+.tab-background:is([selected], [multiselected])::after {
+    right: calc(-1 * var(--tab-corner-size));
+    border-radius: 0 0 0 var(--tab-radius);
+}
+
+/* Tab strip controls */
+#tabbrowser-arrowscrollbox-periphery {
+    margin-left: var(--tab-periphery-offset);
+    border-radius: var(--tab-radius-small) !important;
+    z-index: 1;
+}
+
+/* Tab layout */
+.tabbrowser-tab {
+    margin-left: var(--tab-overlap) !important;
+    margin-right: calc(-1 * var(--tab-overlap)) !important;
+}
+
+.tabbrowser-tab:is([visuallyselected], [multiselected]) {
+    overflow: visible !important;
+}
+
+/* New tab button hover */
+toolbar #tabs-newtab-button:hover
+    > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
+    background: var(--toolbar-hover-color) !important;
+}
+
+/* Inactive tab hover */
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected], [multiselected]) {
+    background: var(--toolbar-hover-color) !important;
+}
