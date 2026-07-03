@@ -2,11 +2,12 @@
     /* UI variables (Firefox built-ins) */
     --inactive-titlebar-opacity: 1 !important;
     --toolbar-field-border-color: transparent !important;
-    --toolbar-field-background-color: #42414D !important;
+    --toolbar-field-background-color: #42414D !important; /* Search bar color */
 
     /* Theme colors */
-    --toolbar-tab-color: #2B2A33;
-    --toolbar-hover-color: #53525E;
+    --toolbar-tab-color: #2B2A33; /* Active tab/rest of nav bar color */
+    --toolbar-hover-color: #53525E; /* Hovering over tabs color */
+    --toolbar-tab-background-color: #1C1B22; /* Unactive tab color */
 
     /* Sizing */
     --tab-radius: 10px;
@@ -23,6 +24,15 @@
     border: none !important;
     border-radius: 8px 8px 0 0;
     z-index: 0;
+}
+
+#TabsToolbar {
+    background: var(--toolbar-tab-background-color) !important;
+}
+  
+/* Area under searchbar (might be turned off) */
+#PersonalToolbar {
+    background: var(--toolbar-tab-color) !important;
 }
 
 /* Active tab base */
@@ -82,4 +92,11 @@ toolbar #tabs-newtab-button:hover
 /* Inactive tab hover */
 .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected], [multiselected]) {
     background: var(--toolbar-hover-color) !important;
+}
+
+/* Adds a vertical divider before the new tab button */
+#tabs-newtab-button {
+  border-left: 1px solid rgb(84, 83, 89) !important;
+  margin-left: 8px !important;
+  padding-left: 6px !important;
 }
