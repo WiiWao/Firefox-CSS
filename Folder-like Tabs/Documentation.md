@@ -1,3 +1,5 @@
+Last tested with firefox 152, nova disabled
+
 The default color scheme used is Firefox Dark Theme
 
 --toolbar-field-background-color    > Search Bar
